@@ -8,4 +8,4 @@ runs:
   image: 'docker://mongodb/atlas:latest'
   entrypoint: 'entrypoint.sh'
   args:
-    - 'atlas --help'
+    - 'atlas'
