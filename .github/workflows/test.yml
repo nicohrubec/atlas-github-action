@@ -13,5 +13,5 @@ jobs:
         with:
           public_api_key: ${{ secrets.PUBLIC_API_KEY }}
           private_api_key: ${{ secrets.PRIVATE_API_KEY }}
-          arg1: projects
+          arg1: clusters
           arg2: list
