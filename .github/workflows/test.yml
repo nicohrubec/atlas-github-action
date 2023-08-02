@@ -10,3 +10,6 @@ jobs:
     steps:
       - name: AtlasCLI
         uses: nicohrubec/atlas-github-action@main
+        with:
+          arg1: projects
+          arg2: list

@@ -7,4 +7,6 @@ runs:
   using: 'docker'
   image: 'docker://nicohrubec266/atlascli:latest'
   entrypoint: '/entrypoint.sh'
-  args: ['projects', 'list']
+  args:
+    - ${{ inputs.arg1 }}
+    - ${{ inputs.arg2 }}
