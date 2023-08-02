@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: AtlasCLI
+        id: cli
         uses: nicohrubec/atlas-github-action@main
         with:
           public_api_key: ${{ secrets.PUBLIC_API_KEY }}
@@ -18,3 +19,5 @@ jobs:
           arg1: projects
           arg2: create
           arg3: test-project
+      - name: Get the project id
+        run: echo "The id of the created project is ${{ steps.cli.outputs.projectId }}"
