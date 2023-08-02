@@ -6,4 +6,6 @@ branding:
 runs:
   using: 'docker'
   image: 'docker://mongodb/atlas:latest'
-  entrypoint: 'atlas projects list'
+  entrypoint: 'entrypoint.sh'
+  args:
+    - 'atlas --help'
