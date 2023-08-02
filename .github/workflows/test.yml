@@ -15,5 +15,5 @@ jobs:
           private_api_key: ${{ secrets.PRIVATE_API_KEY }}
           org_id: ${{ secrets.ORG_ID }}
           project_id: ${{ secrets.PROJECT_ID }}
-          arg1: organizations
+          arg1: projects create
           arg2: list
