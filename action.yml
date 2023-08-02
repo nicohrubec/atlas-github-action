@@ -9,3 +9,4 @@ runs:
   entrypoint: 'atlas'
   args:
     - 'projects'
+    - 'list'
