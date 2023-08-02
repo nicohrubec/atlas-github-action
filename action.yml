@@ -4,9 +4,7 @@ branding:
   icon: 'terminal'
   color: 'green'
 runs:
-  using: "composite"
-  steps:
-    - name: Print something for now
-      shell: bash
-      run: |
-        echo "Goodbye"
+  using: 'docker'
+  image: 'docker://mongodb/atlas:latest'
+  args:
+    - 'atlas --help'
