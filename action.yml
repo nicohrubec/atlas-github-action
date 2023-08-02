@@ -8,4 +8,4 @@ runs:
   image: 'Dockerfile'
   entrypoint: '/entrypoint.sh'
   args:
-    - 'projects'
+    - projects
