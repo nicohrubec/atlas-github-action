@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: AtlasCLI
-        uses: https://github.com/nicohrubec/atlas-github-action@main
+        uses: nicohrubec/atlas-github-action@main
