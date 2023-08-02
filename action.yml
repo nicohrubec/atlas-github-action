@@ -7,4 +7,4 @@ runs:
   using: 'docker'
   image: 'docker://mongodb/atlas:latest'
   args:
-    - 'atlas --help'
+    - atlas --help
