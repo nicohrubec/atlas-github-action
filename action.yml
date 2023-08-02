@@ -1,0 +1,12 @@
+name: 'Atlas CLI GitHub Action'
+description: 'Use AtlasCLI in your GitHub workflow'
+branding:
+  icon: 'terminal'
+  color: 'green'
+runs:
+  using: "composite"
+  steps:
+    - name: Print something for now
+      shell: bash
+      run: |
+        echo "Goodbye"

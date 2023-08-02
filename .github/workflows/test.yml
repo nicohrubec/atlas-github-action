@@ -1,0 +1,11 @@
+name: Test AtlasCLI action
+on:
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    name: Print goodbye
+    steps:
+      - name: AtlasCLI
+        uses: https://github.com/nicohrubec/atlas-github-action@main
