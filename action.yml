@@ -5,7 +5,7 @@ branding:
   color: 'green'
 runs:
   using: 'docker'
-  image: 'docker://mongodb/atlas:latest'
-  entrypoint: './entrypoint.sh'
+  image: 'Dockerfile'
+  entrypoint: '/entrypoint.sh'
   args:
     - 'atlas'
