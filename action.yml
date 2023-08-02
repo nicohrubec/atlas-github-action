@@ -9,4 +9,3 @@ runs:
   entrypoint: '/entrypoint.sh'
   args:
     - 'projects'
-    - 'list'
