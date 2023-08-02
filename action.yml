@@ -8,4 +8,4 @@ runs:
   image: 'docker://mongodb/atlas:latest'
   entrypoint: 'atlas'
   args:
-    - '--help'
+    - 'projects list'
