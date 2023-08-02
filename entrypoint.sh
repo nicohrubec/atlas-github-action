@@ -1,3 +1,3 @@
 #!/bin/sh -l
 
-atlas "$1"
+atlas "$1 $2"
