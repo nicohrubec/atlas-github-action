@@ -11,5 +11,7 @@ jobs:
       - name: AtlasCLI
         uses: nicohrubec/atlas-github-action@main
         with:
+          public_api_key: ${{ secrets.PUBLIC_API_KEY }}
+          private_api_key: ${{ secrets.PRIVATE_API_KEY }}
           arg1: projects
           arg2: list

@@ -8,5 +8,7 @@ runs:
   image: 'docker://nicohrubec266/atlascli:latest'
   entrypoint: '/entrypoint.sh'
   args:
+    - ${{ inputs.public_api_key }}
+    - ${{ inputs.private_api_key }}
     - ${{ inputs.arg1 }}
     - ${{ inputs.arg2 }}
