@@ -15,4 +15,4 @@ runs:
   args:
     - ${{ inputs.arg1 }}
     - ${{ inputs.arg2 }}
-    - ${{ inputs.arg2 }}
+    - ${{ inputs.arg3 }}
