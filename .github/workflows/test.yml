@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   test:
-    name: Print goodbye
+    name: Use AtlasCLI
     runs-on: ubuntu-latest
     steps:
       - name: AtlasCLI
