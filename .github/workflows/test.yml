@@ -17,3 +17,4 @@ jobs:
           project_id: ${{ secrets.PROJECT_ID }}
           arg1: projects
           arg2: create
+          arg3: test-project
