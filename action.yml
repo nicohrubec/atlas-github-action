@@ -6,6 +6,6 @@ branding:
 runs:
   using: 'docker'
   image: 'docker://mongodb/atlas:latest'
-  entrypoint: 'entrypoint.sh'
+  entrypoint: './entrypoint.sh'
   args:
     - 'atlas'
