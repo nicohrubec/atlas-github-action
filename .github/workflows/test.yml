@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: AtlasCLI
         id: cli
-        uses: nicohrubec/atlas-github-action@main
+        uses: nicohrubec/atlas-github-action@atlas-entrypoint
         with:
           public_api_key: ${{ secrets.PUBLIC_API_KEY }}
           private_api_key: ${{ secrets.PRIVATE_API_KEY }}
