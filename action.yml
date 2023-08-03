@@ -6,7 +6,7 @@ branding:
 runs:
   using: 'docker'
   image: 'docker://nicohrubec266/atlascli:latest'
-  entrypoint: '/entrypoint.sh'
+  entrypoint: 'atlas'
   env:
     MONGODB_ATLAS_PUBLIC_API_KEY: ${{ inputs.public_api_key }}
     MONGODB_ATLAS_PRIVATE_API_KEY: ${{ inputs.private_api_key }}
