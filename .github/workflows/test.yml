@@ -14,8 +14,6 @@ jobs:
           private_api_key: ${{ secrets.PRIVATE_API_KEY }}
           org_id: ${{ secrets.ORG_ID }}
           project_id: ${{ secrets.PROJECT_ID }}
-          arg1: projects
-          arg2: create
-          arg3: test-project
+          args: projects create test-project
       - name: Get the project id
         run: echo "The id of the created project is ${{ steps.cli.outputs.projectId }}"

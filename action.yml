@@ -12,7 +12,3 @@ runs:
     MONGODB_ATLAS_PRIVATE_API_KEY: ${{ inputs.private_api_key }}
     MONGODB_ATLAS_ORG_ID: ${{ inputs.org_id }}
     MONGODB_ATLAS_PROJECT_ID: ${{ inputs.project_id }}
-  args:
-    - ${{ inputs.arg1 }}
-    - ${{ inputs.arg2 }}
-    - ${{ inputs.arg3 }}
