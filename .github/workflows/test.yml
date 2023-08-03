@@ -1,8 +1,6 @@
 name: Test AtlasCLI action
 on:
   push:
-    branches:
-      - main
 jobs:
   test:
     name: Use AtlasCLI
