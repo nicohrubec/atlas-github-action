@@ -16,3 +16,8 @@ jobs:
         uses: nicohrubec/atlas-github-action@main
         with:
           args: projects create test-project
+      - name: AtlasCLI-projects-list
+        id: cli-projects-list
+        uses: nicohrubec/atlas-github-action@main
+        with:
+          args: projects list
