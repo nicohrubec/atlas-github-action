@@ -13,6 +13,6 @@ jobs:
     steps:
       - name: AtlasCLI
         id: cli
-        uses: nicohrubec/atlas-github-action@atlas-entrypoint
+        uses: nicohrubec/atlas-github-action@main
         with:
           args: projects create test-project
