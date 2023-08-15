@@ -10,5 +10,5 @@ inputs:
     default: 'latest'
 runs:
   using: 'docker'
-  image: docker://nicohrubec266/atlascli:${{env.INPUT_VERSION}}
+  image: docker://nicohrubec266/atlascli:${{ env.INPUT_VERSION }}
   entrypoint: 'atlas'
