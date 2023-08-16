@@ -3,12 +3,7 @@ description: 'Use AtlasCLI in your GitHub workflow'
 branding:
   icon: 'terminal'
   color: 'green'
-inputs:
-  version:
-    description: 'AtlasCLI version to use in your workflow'
-    required: false
-    default: 'latest'
 runs:
   using: 'docker'
-  image: docker://nicohrubec266/atlascli:${{ inputs.version }}
+  image: 'docker://nicohrubec266/atlascli:latest'
   entrypoint: 'atlas'
