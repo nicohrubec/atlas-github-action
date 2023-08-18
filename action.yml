@@ -13,6 +13,7 @@ runs:
         releases-only: true
         regex: 'atlascli*'
     - uses: robinraju/release-downloader@v1.8
+      id: download-release
       with:
         repository: mongodb/mongodb-atlas-cli
         tag: ${{ steps.get-latest-tag.outputs.tag }}
@@ -20,3 +21,8 @@ runs:
     - name: Print latest tag
       shell: bash
       run: echo "CLI is at version ${{ steps.get-latest-tag.outputs.tag }}"
+    - name: Install atlas
+      shell: bash
+      run: |
+        chmod +x ${{ fromJson(steps.download-release.outputs.downloaded_files)[0] }}
+        ./${{ fromJson(steps.download-release.outputs.downloaded_files)[0] }}
