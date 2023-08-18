@@ -4,6 +4,7 @@ branding:
   icon: 'terminal'
   color: 'green'
 runs:
-  using: 'docker'
-  image: 'docker://nicohrubec266/atlascli:latest'
-  entrypoint: 'atlas'
+  using: 'composite'
+  steps:
+    - run: echo Hello ${{ inputs.who-to-greet }}.
+      shell: bash
