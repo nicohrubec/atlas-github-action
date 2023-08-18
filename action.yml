@@ -16,7 +16,7 @@ runs:
       with:
         repository: mongodb/mongodb-atlas-cli
         tag: ${{ steps.get-latest-tag.outputs.tag }}
-        fileName: '*linux_x86_64.deb'
+        fileName: 'mongodb-atlas-cli*linux_x86_64.deb'
         extract: true
     - name: Print latest tag
       shell: bash
