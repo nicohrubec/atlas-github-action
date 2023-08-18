@@ -25,4 +25,6 @@ runs:
       shell: bash
       run: |
         chmod +x ${{ fromJson(steps.download-release.outputs.downloaded_files)[0] }}
-        .${{ fromJson(steps.download-release.outputs.downloaded_files)[0] }}
+        cd /home/runner/work/atlas-github-action/atlas-github-action
+        ls
+        ./mongodb-atlas-cli_1.10.0_linux_x86_64.deb
