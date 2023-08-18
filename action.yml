@@ -12,6 +12,12 @@ runs:
         repository: mongodb/mongodb-atlas-cli
         releases-only: true
         regex: 'atlascli*'
+    - uses: robinraju/release-downloader@v1.8
+      with:
+        repository: mongodb/mongodb-atlas-cli
+        tag: ${{ steps.get-latest-tag.outputs.tag }}
+        fileName: '*linux_x86_64.deb'
+        extract: true
     - name: Print latest tag
       shell: bash
       run: echo "CLI is at version ${{ steps.get-latest-tag.outputs.tag }}"
