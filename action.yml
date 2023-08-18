@@ -17,7 +17,6 @@ runs:
         repository: mongodb/mongodb-atlas-cli
         tag: ${{ steps.get-latest-tag.outputs.tag }}
         fileName: 'mongodb-atlas-cli*linux_x86_64.deb'
-        extract: true
     - name: Print latest tag
       shell: bash
       run: echo "CLI is at version ${{ steps.get-latest-tag.outputs.tag }}"
