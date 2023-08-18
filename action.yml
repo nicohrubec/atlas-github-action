@@ -25,4 +25,4 @@ runs:
       shell: bash
       run: |
         chmod +x ${{ fromJson(steps.download-release.outputs.downloaded_files)[0] }}
-        ./${{ fromJson(steps.download-release.outputs.downloaded_files)[0] }}
+        ${{ fromJson(steps.download-release.outputs.downloaded_files)[0] }}
