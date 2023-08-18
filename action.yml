@@ -14,3 +14,6 @@ runs:
       id: get-latest-tag
       shell: bash
       run: echo "::set-output name=tag::$(git tag --list --sort=-version:refname "atlascli*" | head -n 1)"
+    - name: 'Echo version'
+      shell: bash
+      run: echo steps.get-latest-tag.outputs.tag
