@@ -25,6 +25,3 @@ runs:
       shell: bash
       run: |
         chmod +x /home/runner/work/atlas-github-action/atlas-github-action/mongodb-atlas-cli_1.10.0_linux_x86_64.deb
-        cd /home/runner/work/atlas-github-action/atlas-github-action
-        ls
-        ./mongodb-atlas-cli_1.10.0_linux_x86_64.deb
