@@ -11,9 +11,11 @@ runs:
       with:
         repository: mongodb/mongodb-atlas-cli
         fetch-depth: 0
-    - name: 'Get latest tag'
+    - uses: oprypin/find-latest-tag@v1
+      id: get-latest-tag
+      with:
+        repository: mongodb/mongodb-atlas-cli
+        releases-only: true
+    - name: Print latest tag
       shell: bash
-      run: echo "tag=$(git tag --list --sort=-version:refname "atlascli*" | head -n 1)" >> $GITHUB_OUTPUT
-    - name: 'Echo version'
-      shell: bash
-      run: echo "${{ steps.get-latest-tag.outputs.tag }}"
+      run: echo "CLI is at version ${{ steps.get-latest-tag.outputs.tag }}"
