@@ -16,6 +16,7 @@ runs:
       with:
         repository: mongodb/mongodb-atlas-cli
         releases-only: true
+        regex: 'atlascli*'
     - name: Print latest tag
       shell: bash
       run: echo "CLI is at version ${{ steps.get-latest-tag.outputs.tag }}"
