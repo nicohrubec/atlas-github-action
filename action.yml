@@ -6,5 +6,11 @@ branding:
 runs:
   using: 'composite'
   steps:
-    - run: echo Hello ${{ inputs.who-to-greet }}.
+    - name: Check out code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: 'Get latest tag'
+      id: get-latest-tag
       shell: bash
+      run: echo "::set-output name=tag::$(git tag --list --sort=-version:refname "atlascli*" | head -n 1)"
