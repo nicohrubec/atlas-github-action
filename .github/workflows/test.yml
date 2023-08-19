@@ -14,3 +14,5 @@ jobs:
       - name: AtlasCLI
         id: cli
         uses: nicohrubec/atlas-github-action@composite-action-poc
+        with:
+          version: 'latest'

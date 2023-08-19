@@ -3,16 +3,24 @@ description: 'Use AtlasCLI in your GitHub workflow'
 branding:
   icon: 'terminal'
   color: 'green'
+inputs:
+  version:
+    description: Version of the Atlas CLI to install
+    required: false
+    default: 'latest'
 runs:
   using: 'composite'
   steps:
-    - uses: oprypin/find-latest-tag@v1
+    - name: Find latest tag
+      if: ${{ github.event.inputs.version }} == 'latest'
+      uses: oprypin/find-latest-tag@v1
       id: get-latest-tag
       with:
         repository: mongodb/mongodb-atlas-cli
         releases-only: true
         regex: 'atlascli*'
-    - uses: robinraju/release-downloader@v1.8
+    - name: Download release
+      uses: robinraju/release-downloader@v1.8
       id: download-release
       with:
         repository: mongodb/mongodb-atlas-cli
