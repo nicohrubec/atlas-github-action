@@ -22,19 +22,15 @@ runs:
       id: determine-tag
       shell: bash
       run: |
-        echo ${{ inputs.version }}
         if [ -z "${{ inputs.version }}" ]
         then
-          echo "use latest tag"
           echo "cli-tag=${{ steps.find-latest-tag.outputs.tag }}" >> $GITHUB_OUTPUT
         else
-          echo "use input tag"
           echo "cli-tag=atlascli/${{ inputs.version }}" >> $GITHUB_OUTPUT
         fi
 
     - name: Download release
       uses: robinraju/release-downloader@v1.8
-      id: download-release
       with:
         repository: mongodb/mongodb-atlas-cli
         tag: ${{ steps.determine-tag.outputs.cli-tag }}
