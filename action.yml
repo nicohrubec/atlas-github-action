@@ -21,8 +21,3 @@ runs:
     - name: Print latest tag
       shell: bash
       run: echo "CLI is at version ${{ steps.get-latest-tag.outputs.tag }}"
-    - name: Install atlas
-      shell: bash
-      run: |
-        /bin/bash "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        
