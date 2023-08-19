@@ -23,6 +23,7 @@ runs:
       id: determine-tag
       shell: bash
       run: |
+        echo ${{ github.event.inputs.version }}
         if ${{ github.event.inputs.version }} == 'latest'
         then
           echo "use latest tag"
