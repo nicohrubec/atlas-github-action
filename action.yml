@@ -53,7 +53,7 @@ runs:
       if: steps.check_path.outputs.atlas-installed == 0
       uses: actions/setup-go@v3
       with:
-        go-version: 1.20
+        go-version: 1.19
 
     - name: Checkout repository
       if: steps.check_path.outputs.atlas-installed == 0
