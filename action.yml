@@ -21,14 +21,12 @@ runs:
         regex: 'atlascli*'
     - name: Determine tag
       shell: bash
-      run:
+      run: |
         if ${{ github.event.inputs.version }} == 'latest'
         then
           echo "use latest tag"
-          exit 0
         else
           echo "use input tag"
-          exit 0
         fi
 
     - name: Download release
