@@ -20,6 +20,7 @@ runs:
         releases-only: true
         regex: 'atlascli*'
     - name: Determine tag
+      id: determine-tag
       shell: bash
       run: |
         if ${{ github.event.inputs.version }} == 'latest'
@@ -40,4 +41,4 @@ runs:
         fileName: 'mongodb-atlas-cli*linux_x86_64.deb'
     - name: Print latest tag
       shell: bash
-      run: echo "CLI is at version ${{ steps.find-latest-tag.outputs.tag }}"
+      run: echo "CLI is at version ${{ steps.determine-tag.outputs.cli-tag }}"
