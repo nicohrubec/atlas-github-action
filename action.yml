@@ -14,18 +14,30 @@ runs:
     - name: Find latest tag
       if: ${{ github.event.inputs.version }} == 'latest'
       uses: oprypin/find-latest-tag@v1
-      id: get-latest-tag
+      id: find-latest-tag
       with:
         repository: mongodb/mongodb-atlas-cli
         releases-only: true
         regex: 'atlascli*'
+    - name: Determine tag
+      shell: bash
+      run:
+        if ${{ github.event.inputs.version }} == 'latest'
+        then
+          echo "use latest tag"
+          exit 0
+        else
+          echo "use input tag"
+          exit 0
+        fi
+
     - name: Download release
       uses: robinraju/release-downloader@v1.8
       id: download-release
       with:
         repository: mongodb/mongodb-atlas-cli
-        tag: ${{ steps.get-latest-tag.outputs.tag }}
+        tag: ${{ steps.find-latest-tag.outputs.tag }}
         fileName: 'mongodb-atlas-cli*linux_x86_64.deb'
     - name: Print latest tag
       shell: bash
-      run: echo "CLI is at version ${{ steps.get-latest-tag.outputs.tag }}"
+      run: echo "CLI is at version ${{ steps.find-latest-tag.outputs.tag }}"
