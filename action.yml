@@ -61,7 +61,6 @@ runs:
       with:
         repository: mongodb/mongodb-atlas-cli
         # ref: ${{ steps.determine-tag.outputs.cli-tag }}"
-        ref: atlascli/1.10.0
 
     - name: Build AtlasCLI
       if: steps.check_path.outputs.atlas-installed == 0
