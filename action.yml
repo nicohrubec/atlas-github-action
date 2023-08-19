@@ -12,7 +12,7 @@ runs:
   using: 'composite'
   steps:
     - name: Find latest tag
-      if: ${{ github.event.inputs.version }} == 'latest'
+      if: ${{ inputs.version }} == 'latest'
       uses: oprypin/find-latest-tag@v1
       id: find-latest-tag
       with:
@@ -23,14 +23,14 @@ runs:
       id: determine-tag
       shell: bash
       run: |
-        echo ${{ github.event.inputs.version }}
-        if ${{ github.event.inputs.version }} == 'latest'
+        echo ${{ inputs.version }}
+        if ${{ inputs.version }} == 'latest'
         then
           echo "use latest tag"
           echo "cli-tag=${{ steps.find-latest-tag.outputs.tag }}" >> $GITHUB_OUTPUT
         else
           echo "use input tag"
-          echo "cli-tag=atlascli/${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          echo "cli-tag=atlascli/${{ inputs.version }}" >> $GITHUB_OUTPUT
         fi
 
     - name: Download release
