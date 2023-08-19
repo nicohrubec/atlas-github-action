@@ -37,7 +37,7 @@ runs:
       id: download-release
       with:
         repository: mongodb/mongodb-atlas-cli
-        tag: ${{ teps.determine-tag.outputs.cli-tag }}
+        tag: ${{ steps.determine-tag.outputs.cli-tag }}
         fileName: 'mongodb-atlas-cli*linux_x86_64.deb'
     - name: Print latest tag
       shell: bash
