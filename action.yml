@@ -24,7 +24,7 @@ runs:
       shell: bash
       run: |
         echo ${{ inputs.version }}
-        if ${{ inputs.version }} == 'latest'
+        if ${{ inputs.version }} == latest
         then
           echo "use latest tag"
           echo "cli-tag=${{ steps.find-latest-tag.outputs.tag }}" >> $GITHUB_OUTPUT
