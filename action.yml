@@ -11,7 +11,7 @@ runs:
   using: 'composite'
   steps:
     - name: Find latest tag
-      if: ${{ inputs.version }} == 'latest'
+      if: -z "${{ inputs.version }}"
       uses: oprypin/find-latest-tag@v1
       id: find-latest-tag
       with:
@@ -37,7 +37,7 @@ runs:
       id: download-release
       with:
         repository: mongodb/mongodb-atlas-cli
-        tag: ${{ steps.find-latest-tag.outputs.tag }} # should be ${{ steps.determine-tag.outputs.cli-tag }}
+        tag: ${{ teps.determine-tag.outputs.cli-tag }}
         fileName: 'mongodb-atlas-cli*linux_x86_64.deb'
     - name: Print latest tag
       shell: bash
