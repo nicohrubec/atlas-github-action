@@ -7,7 +7,6 @@ inputs:
   version:
     description: Version of the Atlas CLI to install
     required: false
-    default: 'latest'
 runs:
   using: 'composite'
   steps:
@@ -24,7 +23,7 @@ runs:
       shell: bash
       run: |
         echo ${{ inputs.version }}
-        if ${{ inputs.version }} == latest
+        if [ -n "${{ inputs.version }}" ]
         then
           echo "use latest tag"
           echo "cli-tag=${{ steps.find-latest-tag.outputs.tag }}" >> $GITHUB_OUTPUT
@@ -38,7 +37,7 @@ runs:
       id: download-release
       with:
         repository: mongodb/mongodb-atlas-cli
-        tag: ${{ steps.find-latest-tag.outputs.tag }}
+        tag: ${{ steps.find-latest-tag.outputs.tag }} # should be ${{ steps.determine-tag.outputs.cli-tag }}
         fileName: 'mongodb-atlas-cli*linux_x86_64.deb'
     - name: Print latest tag
       shell: bash
