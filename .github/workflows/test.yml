@@ -4,7 +4,7 @@ on:
 jobs:
   test:
     name: Use AtlasCLI
-    runs-on: ubuntu-latest
+    runs-on: macos
     env:
       MONGODB_ATLAS_PUBLIC_API_KEY: ${{ secrets.PUBLIC_API_KEY }}
       MONGODB_ATLAS_PRIVATE_API_KEY: ${{ secrets.PRIVATE_API_KEY }}
