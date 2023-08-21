@@ -56,4 +56,4 @@ runs:
       run: |
         ls /tmp
         echo ${{ fromJson(steps.download-release.outputs.downloaded_files)[0] }}
-        tar -C /tmp -xzf tmp/mongodb-atlas-cli_1.10.0_linux_x86_64.tar.gz
+        tar -C /tmp -xzf /tmp/mongodb-atlas-cli_1.10.0_linux_x86_64.tar.gz
