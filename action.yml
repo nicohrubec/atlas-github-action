@@ -55,4 +55,5 @@ runs:
       shell: bash
       run: |
         echo ${{ fromJson(steps.download-release.outputs.downloaded_files)[0] }}
-        tar -C /tmp -xzf mongodb-atlas-cli*
+        tar -C /tmp -xzf tmp/mongodb-atlas-cli*
+        ls /tmp
