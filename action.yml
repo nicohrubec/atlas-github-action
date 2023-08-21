@@ -34,9 +34,6 @@ runs:
         else
           echo "cli-tag=atlascli/${{ inputs.version }}" >> $GITHUB_OUTPUT
         fi
-    - name: Print latest tag
-      shell: bash
-      run: echo "CLI is at version ${{ steps.determine-tag.outputs.cli-tag }}"
     - name: Download release
       id: download-release
       uses: robinraju/release-downloader@v1.8
@@ -45,8 +42,8 @@ runs:
         tag: ${{ steps.determine-tag.outputs.cli-tag }}
         fileName: 'mongodb-atlas-cli*linux*.tar.gz'
         out-file-path: /tmp
-    - name: Check Atlas CLI is in the $PATH
-      id: check_path
+    - name: Check Atlas CLI is installed
+      id: check-path
       shell: bash
       run: |
         if ! which atlas >/dev/null 2>&1; then
@@ -56,7 +53,7 @@ runs:
         fi
         echo "atlas-installed=1" >> $GITHUB_OUTPUT
     - name: Install AtlasCLI
-      if:  steps.check_path.outputs.atlas-installed == 0
+      if:  steps.check-path.outputs.atlas-installed == 0
       shell: bash
       run: |
         if [ ${{ runner.arch }} = "ARM64" ]; then
@@ -70,9 +67,3 @@ runs:
         
         tar -C /tmp -xzf /tmp/mongodb-atlas-cli_*_linux_${ARCH}.tar.gz
         sudo mv /tmp/mongodb-atlas-cli_*_linux_${ARCH}/bin/atlas /usr/bin
-    - name: Check os and architecture
-      shell: bash
-      run: |
-        echo ${{ runner.os }}
-        echo ${{ runner.arch }}
-
