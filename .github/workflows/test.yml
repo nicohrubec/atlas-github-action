@@ -11,9 +11,6 @@ jobs:
       MONGODB_ATLAS_ORG_ID: ${{ secrets.ORG_ID }}
       MONGODB_ATLAS_PROJECT_ID: ${{ secrets.PROJECT_ID }}
     steps:
-      - name: AtlasCLI
-        id: cli
-        uses: nicohrubec/atlas-github-action@composite-action-poc
       - name: AtlasCLI version set
         uses: nicohrubec/atlas-github-action@composite-action-poc
         with:
