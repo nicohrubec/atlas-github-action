@@ -27,3 +27,15 @@ jobs:
       - name: Use AtlasCLI
         shell: bash
         run: atlas --help
+  create-delete-project:
+    name: Create and delete project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup AtlasCLI and create a project
+        id: create-project
+        uses: nicohrubec/atlas-github-action@composite-action-poc
+        with:
+          create-project-name: ${{github.run_id}}
+      - name: delete project
+        uses: nicohrubec/atlas-github-action@composite-action-poc
+        delete-project-id: ${{ steps.atlas-cli.outputs.create-project-id }}
