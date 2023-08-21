@@ -37,8 +37,8 @@ runs:
       with:
         repository: mongodb/mongodb-atlas-cli
         tag: ${{ steps.determine-tag.outputs.cli-tag }}
-        fileName: 'mongodb-atlas-cli*linux_x86_64.tar.gz' # change this to .tar.gz
-        out-file-path: /
+        fileName: 'mongodb-atlas-cli*linux_x86_64.tar.gz'
+        out-file-path: /tmp
     - name: Check Atlas CLI is in the $PATH
       id: check_path
       shell: bash
