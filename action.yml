@@ -54,6 +54,6 @@ runs:
       if:  steps.check_path.outputs.atlas-installed == 0
       shell: bash
       run: |
+        ls /tmp
         echo ${{ fromJson(steps.download-release.outputs.downloaded_files)[0] }}
         tar -C /tmp -xzf tmp/mongodb-atlas-cli*
-        ls /tmp
