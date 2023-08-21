@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup AtlasCLI without version input
-        uses: mongodb/atlas-github-action@composite-action-poc
+        uses: nicohrubec/atlas-github-action@composite-action-poc
       - name: Use AtlasCLI
         shell: bash
         run: atlas --help
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup AtlasCLI with version input
-        uses: mongodb/atlas-github-action@composite-action-poc
+        uses: nicohrubec/atlas-github-action@composite-action-poc
         with:
           version: v1.9.0
       - name: Use AtlasCLI
