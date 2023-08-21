@@ -38,4 +38,5 @@ jobs:
           create-project-name: ${{github.run_id}}
       - name: delete project
         uses: nicohrubec/atlas-github-action@composite-action-poc
-        delete-project-id: ${{ steps.atlas-cli.outputs.create-project-id }}
+        with:
+          delete-project-id: ${{ steps.atlas-cli.outputs.create-project-id }}
