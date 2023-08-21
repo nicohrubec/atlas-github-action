@@ -77,7 +77,6 @@ runs:
         
         tar -C /tmp -xzf /tmp/mongodb-atlas-cli_*_linux_${ARCH}.tar.gz
         sudo mv /tmp/mongodb-atlas-cli_*_linux_${ARCH}/bin/atlas /usr/bin
-
     - name: Create Project
       if: ${{ inputs.create-project-name }}
       shell: bash
@@ -89,3 +88,12 @@ runs:
       if: ${{ inputs.delete-project-id }}
       shell: bash
       run: atlas project delete ${{ inputs.delete-project-id }} --force
+    - name: Delete Cluster
+      if: ${{ inputs.delete-cluster-name && inputs.delete-project-id }}
+      shell: bash
+      run: |
+        atlas cluster delete ${{ inputs.delete-cluster-name }} --force --projectId ${{ inputs.delete-project-id }}
+          if ! atlas cluster watch ${{ inputs.delete-cluster-name }} --projectId ${{ inputs.delete-project-id }} >/dev/null 2>&1; then
+          echo "Atlas Cluster '${{ inputs.delete-cluster-name }}' is deleted"
+          exit 0
+        fi
