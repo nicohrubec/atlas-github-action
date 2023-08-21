@@ -60,8 +60,8 @@ runs:
       if:  steps.check_path.outputs.atlas-installed == 0
       shell: bash
       run: |
-        tar -C /tmp -xzf /tmp/mongodb-atlas-cli_1.10.0_linux_x86_64.tar.gz
-        sudo mv /tmp/mongodb-atlas-cli_1.10.0_linux_x86_64/bin/atlas /usr/bin
+        tar -C /tmp -xzf /tmp/mongodb-atlas-cli_*_linux_x86_64.tar.gz
+        sudo mv /tmp/mongodb-atlas-cli_*_linux_x86_64/bin/atlas /usr/bin
     - name: Check os and architecture
       shell: bash
       run: |
