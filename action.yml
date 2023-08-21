@@ -28,16 +28,17 @@ runs:
         else
           echo "cli-tag=atlascli/${{ inputs.version }}" >> $GITHUB_OUTPUT
         fi
-
+    - name: Print latest tag
+      shell: bash
+      run: echo "CLI is at version ${{ steps.determine-tag.outputs.cli-tag }}"
     - name: Download release
+      id: download-release
       uses: robinraju/release-downloader@v1.8
       with:
         repository: mongodb/mongodb-atlas-cli
         tag: ${{ steps.determine-tag.outputs.cli-tag }}
-        fileName: 'mongodb-atlas-cli*linux_x86_64.deb'
-    - name: Print latest tag
-      shell: bash
-      run: echo "CLI is at version ${{ steps.determine-tag.outputs.cli-tag }}"
+        fileName: 'mongodb-atlas-cli*linux_x86_64.tar.gz' # change this to .tar.gz
+        out-file-path: /
     - name: Check Atlas CLI is in the $PATH
       id: check_path
       shell: bash
@@ -49,29 +50,8 @@ runs:
         fi
         echo "atlas-installed=1" >> $GITHUB_OUTPUT
 
-    - name: Install Go
-      if: steps.check_path.outputs.atlas-installed == 0
-      uses: actions/setup-go@v3
-      with:
-        go-version: 1.19
-
-    - name: Checkout repository
-      if: steps.check_path.outputs.atlas-installed == 0
-      uses: actions/checkout@v3
-      with:
-        repository: mongodb/mongodb-atlas-cli
-        # ref: ${{ steps.determine-tag.outputs.cli-tag }}"
-
-    - name: Build AtlasCLI
-      if: steps.check_path.outputs.atlas-installed == 0
-      shell: bash
-      run: make build-atlascli
-
-    - name: Add Atlas CLI to $PATH
-      if: steps.check_path.outputs.atlas-installed == 0
+    - name: Install AtlasCLI
+      if:  steps.check_path.outputs.atlas-installed == 0
       shell: bash
       run: |
-        chmod +x bin/atlas
-        mkdir -p $HOME/.local/bin
-        mv bin/atlas $HOME/.local/bin
-        echo "$HOME/.local/bin" >> $GITHUB_PATH 
+        echo ${{ fromJson(steps.download-release.outputs.downloaded_files)[0] }}
