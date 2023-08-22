@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup AtlasCLI without version input
-        uses: nicohrubec/atlas-github-action@${{ github.ref }}
+        uses: nicohrubec/atlas-github-action@${{ env.GITHUB_REF }}
       - name: Use AtlasCLI
         shell: bash
         run: atlas --help
