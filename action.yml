@@ -22,6 +22,14 @@ inputs:
   project-id:
     description: 'Id of the project.'
     required: false
+  cluster-name:
+    description: 'Name of the cluster.'
+    required: false
+  run-setup:
+    description: 'This command takes you through registration, login, default profile creation and creating 
+      your first free tier cluster'
+    required: false
+    default: 'false'
 outputs:
   create-project-id:
     description: 'ProjectId of the project that was created.'
@@ -117,3 +125,20 @@ runs:
           echo "Atlas Cluster '${{ inputs.delete-cluster-name }}' is deleted"
           exit 0
         fi
+    - name: Setup
+      if: ${{ inputs.run-setup == 'true' }}
+      shell: bash
+      run: |
+        FLAGS=""
+        
+        if [ -z "${{ inputs.project-id }}" ]
+        then
+          FLAGS += " --projectId ${{ inputs.project-id }}"
+        fi
+        if [ -z "${{ inputs.cluster-name }}" ]
+        then
+          FLAGS += " --clusterName ${{ inputs.cluster-name }}"
+        fi
+        
+        
+        atlas setup --force --currentIp --skipMongosh --skipSampleData {flags}
