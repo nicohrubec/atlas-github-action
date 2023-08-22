@@ -90,5 +90,5 @@ jobs:
       - name: Teardown
         uses: nicohrubec/atlas-github-action@composite-action-poc
         with:
-          project-id: ${{ steps.create-project.outputs.create-project-id }}
+          delete-project-id: ${{ steps.create-project.outputs.create-project-id }}
           delete-cluster-name: ${{github.run_id}}-cluster

@@ -101,10 +101,6 @@ runs:
       run: |
         projectId=$(atlas project create "${{ inputs.create-project-name }}" -o json-path="$.id")
         echo "create-project-id=$(echo $projectId)" >> $GITHUB_OUTPUT
-    - name: Delete Project
-      if: ${{ inputs.delete-project-id }}
-      shell: bash
-      run: atlas project delete ${{ inputs.delete-project-id }} --force
     - name: Create Cluster
       if: ${{ inputs.create-cluster-name }}
       shell: bash
@@ -117,14 +113,18 @@ runs:
           atlas cluster create ${{ inputs.create-cluster-name }} --projectId ${{ inputs.project-id }} ${CLUSTER_CONFIG}
         fi
     - name: Delete Cluster
-      if: ${{ inputs.delete-cluster-name && inputs.project-id }}
+      if: ${{ inputs.delete-cluster-name && inputs.delete-project-id }}
       shell: bash
       run: |
-        atlas cluster delete ${{ inputs.delete-cluster-name }} --force --projectId ${{ inputs.project-id }}
-        if ! atlas cluster watch ${{ inputs.delete-cluster-name }} --projectId ${{ inputs.project-id }} >/dev/null 2>&1; then
+        atlas cluster delete ${{ inputs.delete-cluster-name }} --force --projectId ${{ inputs.delete-project-id }}
+        if ! atlas cluster watch ${{ inputs.delete-cluster-name }} --projectId ${{ inputs.delete-project-id }} >/dev/null 2>&1; then
           echo "Atlas Cluster '${{ inputs.delete-cluster-name }}' is deleted"
           exit 0
         fi
+    - name: Delete Project
+      if: ${{ inputs.delete-project-id }}
+      shell: bash
+      run: atlas project delete ${{ inputs.delete-project-id }} --force
     - name: Setup
       if: ${{ inputs.run-setup == 'true' }}
       shell: bash
