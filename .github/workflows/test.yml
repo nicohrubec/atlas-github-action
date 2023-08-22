@@ -9,7 +9,7 @@ env:
 jobs:
   get-branch:
     name: Get the branch
-    shell: bash
+    runs-on: ubuntu-latest
     steps:
       - name: "Get branch name and save to env"
         env:
