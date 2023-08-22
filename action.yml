@@ -140,4 +140,4 @@ runs:
           FLAGS += " --clusterName ${{ inputs.cluster-name }}"
         fi
         
-        atlas setup --force --currentIp --skipMongosh --skipSampleData {FLAGS}
+        atlas setup --force --currentIp --skipMongosh --skipSampleData ${FLAGS}
