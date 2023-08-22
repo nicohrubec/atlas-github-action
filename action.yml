@@ -139,7 +139,7 @@ runs:
       shell: bash
       id: setup
       run: |
-        FLAGS="--force --currentIp --skipMongosh --skipSampleData --username ${{ inputs.username }}" --password ${{ inputs.password }}"
+        FLAGS="--force --currentIp --skipMongosh --skipSampleData --username ${{ inputs.username }} --password ${{ inputs.password }}"
         
         if [ -n "${{ inputs.project-id }}" ]
         then
