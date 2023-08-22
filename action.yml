@@ -133,12 +133,13 @@ runs:
         
         if [ -n "${{ inputs.project-id }}" ]
         then
-          echo "${FLAGS}"
           FLAGS+="--projectId ${{ inputs.project-id }}"
+          echo "${FLAGS}"
         fi
         if [ -n "${{ inputs.cluster-name }}" ]
         then
           FLAGS+=" --clusterName ${{ inputs.cluster-name }}"
+          echo "${FLAGS}"
         fi
         
         echo "atlas setup ${FLAGS} --force --currentIp --skipMongosh --skipSampleData"
