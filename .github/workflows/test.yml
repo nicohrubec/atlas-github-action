@@ -62,7 +62,7 @@ jobs:
         uses: nicohrubec/atlas-github-action@composite-action-poc
         with:
           delete-cluster-name: test-cluster
-          project-id: ${{ steps.create-project.outputs.create-project-id }}
+          delete-project-id: ${{ steps.create-project.outputs.create-project-id }}
       - name: delete project
         uses: nicohrubec/atlas-github-action@composite-action-poc
         with:
