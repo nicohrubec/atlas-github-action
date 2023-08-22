@@ -133,6 +133,7 @@ runs:
         
         if [ -n "${{ inputs.project-id }}" ]
         then
+          echo "${FLAGS}"
           FLAGS = "${FLAGS} --projectId ${{ inputs.project-id }}"
         fi
         if [ -n "${{ inputs.cluster-name }}" ]
