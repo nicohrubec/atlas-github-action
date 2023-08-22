@@ -131,9 +131,9 @@ runs:
       run: |
         FLAGS=""
         
-        if [ -n "${{ inputs.delete-project-id }}" ]
+        if [ -n "${{ inputs.project-id }}" ]
         then
-          FLAGS+="--projectId ${{ inputs.delete-project-id }}"
+          FLAGS+="--projectId ${{ inputs.project-id }}"
           echo "${FLAGS}"
         fi
         if [ -n "${{ inputs.cluster-name }}" ]
