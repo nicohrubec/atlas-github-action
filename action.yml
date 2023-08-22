@@ -30,6 +30,12 @@ inputs:
       your first free tier cluster'
     required: false
     default: 'false'
+  username:
+    description: 'Username for the created cluster.'
+    required: false
+  password:
+    description: 'Password for the created cluster.'
+    required: false
 outputs:
   create-project-id:
     description: 'ProjectId of the project that was created.'
@@ -129,20 +135,20 @@ runs:
       shell: bash
       run: atlas project delete ${{ inputs.delete-project-id }} --force
     - name: Setup
-      if: ${{ inputs.run-setup == 'true' }}
+      if: ${{ inputs.run-setup == 'true' && inputs.username && inputs.password }}
       shell: bash
       id: setup
       run: |
-        FLAGS=""
+        FLAGS="--force --currentIp --skipMongosh --skipSampleData --username ${{ inputs.username }}" --password ${{ inputs.password }}"
         
         if [ -n "${{ inputs.project-id }}" ]
         then
-          FLAGS+="--projectId ${{ inputs.project-id }}"
+          FLAGS+=" --projectId ${{ inputs.project-id }}"
         fi
         if [ -n "${{ inputs.cluster-name }}" ]
         then
           FLAGS+=" --clusterName ${{ inputs.cluster-name }}"
         fi
         
-        connectionString=$(atlas setup ${FLAGS} --force --currentIp --skipMongosh --skipSampleData | sed -n 's/Your connection string: //p')
+        connectionString=$(atlas setup ${FLAGS} | sed -n 's/Your connection string: //p')
         echo "connection-string=$(echo $connectionString)" >> $GITHUB_OUTPUT 

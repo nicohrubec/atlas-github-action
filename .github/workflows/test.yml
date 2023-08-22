@@ -84,6 +84,8 @@ jobs:
           run-setup: true
           project-id: ${{ steps.create-project.outputs.create-project-id }}
           cluster-name: ${{github.run_id}}-cluster
+          username: ${{ secrets.CLUSTER_USERNAME }}
+          password: ${{ secrets.CLUSTER_USERNAME }}
       - name: Retrieve Connection String
         shell: bash
         run: |
