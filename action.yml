@@ -10,6 +10,9 @@ inputs:
   create-project-name:
     description: 'Name of the project that will be created.'
     required: false
+  create-cluster-name:
+    description: 'Name of the cluster that will be created.'
+    required: false
   delete-project-id:
     description: 'Id of the project that will be deleted.'
     required: false
