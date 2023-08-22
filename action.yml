@@ -133,7 +133,7 @@ runs:
         
         if [ -n "${{ inputs.project-id }}" ]
         then
-          FLAGS += " --projectId ${{ inputs.project-id }}"
+          FLAGS = "${FLAGS} --projectId ${{ inputs.project-id }}"
         fi
         if [ -n "${{ inputs.cluster-name }}" ]
         then
