@@ -131,11 +131,11 @@ runs:
       run: |
         FLAGS=""
         
-        if [ -z "${{ inputs.project-id }}" ]
+        if [ -n "${{ inputs.project-id }}" ]
         then
           FLAGS += " --projectId ${{ inputs.project-id }}"
         fi
-        if [ -z "${{ inputs.cluster-name }}" ]
+        if [ -n "${{ inputs.cluster-name }}" ]
         then
           FLAGS += " --clusterName ${{ inputs.cluster-name }}"
         fi
