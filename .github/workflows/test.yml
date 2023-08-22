@@ -7,12 +7,28 @@ env:
   MONGODB_ATLAS_ORG_ID: ${{ secrets.ORG_ID }}
   MONGODB_ATLAS_PROJECT_ID: ${{ secrets.PROJECT_ID }}
 jobs:
+  get-branch:
+    name: Get the branch
+    shell: bash
+    steps:
+      - name: "Get branch name and save to env"
+        env:
+          IS_PR: ${{ github.EVENT_NAME == 'pull_request' }}
+        run: |
+          if ${IS_PR}; then
+            BRANCH_NAME="${GITHUB_HEAD_REF}"
+          else
+            BRANCH_NAME="${GITHUB_REF##*/}"
+          fi
+          echo "BRANCH_NAME=${BRANCH_NAME}" >> $GITHUB_ENV
+
   no-version:
     name: Use AtlasCLI without version input
+    needs: get-branch
     runs-on: ubuntu-latest
     steps:
       - name: Setup AtlasCLI without version input
-        uses: nicohrubec/atlas-github-action@${{ env.GITHUB_REF }}
+        uses: nicohrubec/atlas-github-action@${{ env.BRANCH_NAME }}
       - name: Use AtlasCLI
         shell: bash
         run: atlas --help
