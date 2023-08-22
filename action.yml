@@ -16,6 +16,9 @@ inputs:
   delete-project-id:
     description: 'Id of the project that will be deleted.'
     required: false
+  delete-cluster-name:
+    description: 'Name of the cluster that will be deleted.'
+    required: false
   project-id:
     description: 'Id of the project.'
     required: false
