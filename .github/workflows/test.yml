@@ -78,11 +78,16 @@ jobs:
         with:
           create-project-name: ${{github.run_id}}-test-setup-project
       - name: Setup
+        id: setup
         uses: nicohrubec/atlas-github-action@composite-action-poc
         with:
           run-setup: true
           project-id: ${{ steps.create-project.outputs.create-project-id }}
           cluster-name: ${{github.run_id}}-cluster
+      - name: Retrieve Connection String
+        shell: bash
+        run: |
+          echo "${{ steps.setup.outputs.connection-string }}"
       - name: Teardown
         uses: nicohrubec/atlas-github-action@composite-action-poc
         with:

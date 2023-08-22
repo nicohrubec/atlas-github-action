@@ -34,6 +34,9 @@ outputs:
   create-project-id:
     description: 'ProjectId of the project that was created.'
     value: ${{ steps.create-project.outputs.create-project-id }}
+  connection-string:
+    description: 'Connection String to use to connect to the created Cluster.'
+    value: ${{ steps.setup.outputs.connection-string }}
 runs:
   using: 'composite'
   steps:
@@ -128,6 +131,7 @@ runs:
     - name: Setup
       if: ${{ inputs.run-setup == 'true' }}
       shell: bash
+      id: setup
       run: |
         FLAGS=""
         
@@ -140,4 +144,5 @@ runs:
           FLAGS+=" --clusterName ${{ inputs.cluster-name }}"
         fi
         
-        atlas setup ${FLAGS} --force --currentIp --skipMongosh --skipSampleData
+        connectionString=$(atlas setup ${FLAGS} --force --currentIp --skipMongosh --skipSampleData)
+        echo "connection-string=$(echo $connectionString)" >> $GITHUB_OUTPUT 
