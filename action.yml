@@ -134,7 +134,7 @@ runs:
         if [ -n "${{ inputs.project-id }}" ]
         then
           echo "${FLAGS}"
-          FLAGS+=" --projectId ${{ inputs.project-id }}"
+          FLAGS+="--projectId ${{ inputs.project-id }}"
         fi
         if [ -n "${{ inputs.cluster-name }}" ]
         then
