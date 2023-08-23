@@ -11,8 +11,10 @@ jobs:
     name: Use AtlasCLI without version input
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Setup AtlasCLI without version input
-        uses: nicohrubec/atlas-github-action@composite-action-poc
+        uses: ./
       - name: Use AtlasCLI
         shell: bash
         run: atlas --help
