@@ -7,12 +7,8 @@ env:
   MONGODB_ATLAS_ORG_ID: ${{ secrets.ORG_ID }}
   MONGODB_ATLAS_PROJECT_ID: ${{ secrets.PROJECT_ID }}
 jobs:
-  get-branch:
-    name: Get the branch
-    runs-on: ubuntu-latest
   no-version:
     name: Use AtlasCLI without version input
-    needs: get-branch
     runs-on: ubuntu-latest
     steps:
       - name: Setup AtlasCLI without version input
